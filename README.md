@@ -78,16 +78,25 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 
 ## 2일차
 - Oracle 도커로 설치
-    - 설치되어 있는 Oracle 삭제
-    -  
+    - Docker는 Virtual Machine을 업그레이드한 시스템
+    - 실행에서 services.msc로 접근하여 윈도우에 설치되어 있는 Oracle을 서비스 중지
+    - Docker에서 Oracle 이미지 컨테이너를 다운로드 후 실행
+    - Docker 설치 시 오류 Docker Desktop - WSL Update failed
+        - Windows 업데이트 실행 최신판 설치 후 재부팅
+        - https://github.com/microsoft/WSL/releases wsl.2.x.x.x64.msl 설치 후
+        - Docker Desktop 재실행
+    - Oracle 최신판 설치
 
 - Database 설정
-    - H2 DB : Spring Boot에서 쉽게 사용가능한 Inmemory DB, Oracle, MySql, SQLServer와 쉽게 호환
     - Oracle : 운영시 사용할 DB
-    - MySql : Optional 설명 DB
     - Oracle PKNUSB / pknu_p@ss 로 생성
-        - 콘솔
-        ```shell
-        > sqlplus system/password
-        SQL>
-        ```
+    - 콘솔(도커/일반Oracle)
+    ```shell
+    > sqlplus system/password
+    SQL>
+    ```
+    - H2 DB : Spring Boot에서 쉽게 사용가능한 Inmemory DB, Oracle, MySql, SQLServer와 쉽게 호환
+    - MySql : Optional 설명 DB
+
+- Spring Boot + MyBatis
+    - applica
