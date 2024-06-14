@@ -8,6 +8,6 @@ import com.jaemin.spring02.domain.Todo;
 
 @Mapper
 public interface TodoMapper {
-    List<Todo> selecTodos();
-    Todo selecTodo(int tno);
+    List<Todo> selectTodos() throws Exception;
+    Todo selectTodo(int tno) throws Exception;
 }
