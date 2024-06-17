@@ -202,3 +202,52 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 	- (오류났던 사항)
 		- application.properties jdbc:oracle:thin:@localgost:1521:FREE , thin뒤에 :이 없었음 붙여야 함
 		- TodoMapper.xml에서 Select문에 세미클론이 찍혀있는 경우 오류가 남(FROM TODOS;) xml파일은 세미클론이 들어가면 안됨
+
+## 4일차
+- Sprig Boot JPA + Oracle + Thymeleaf + React
+	- JPA -> DB설계를 하지 않고 엔티티 클래스를 DB로 자동생성 해주는 기술, Query로 만들 필요없음
+	- H2 -> Oracle, MySQL, SQLServer등과 달리 Inmemory DB, 스프링부트 실행되면 같이 실행되는 DB
+		개발편의성, 다른 DB로 전환시 아주 편리, 개발하는 동안 사용을 추천
+	- Thymeleaf -> JSP의 단점 복잡한 템플릿형태 + 스파게티코드를 해소해주는 템플릿
+	- Bootstrap -> 웹디자인 및 CSS의 혁신, 커스터마이징도 가능
+	- React -> 프론트엔드를 분리, 백엔드 서버와 프론트엔드 서버를 따로 관리(통합도 가능)
+
+- Spring Boot 프로젝트 생성
+	- 명령 팔레트로 시작
+	- Spring Boot version : 3.2.6
+	- project language : java
+	- Group ID : com.jaemin
+	- Artifact ID : backboard
+	- package type : jar
+	- Java version : 17
+	- Dependency
+		1. Spring Boot DevTools
+		2. Lombok
+		3. Spring Web
+		4. Thymeleaf
+		5. Oracle Driver(나중에)
+		6. H2 Database(나중에)
+		7. Data JPA(나중에)
+
+- Spring Boot JPA 프로젝트 개발
+	1. (설정) build.gradle 디펜던시 확인
+	2. (설정) application.properties 기본설정 입력(포트번호, 로그색상, 자동재빌드, 로그레벨)
+	3. MVC패턴에 맞춰서 각 기능별로 폴더를 생성(controller, service, entity ... )
+	4. /controller/MainController.java 생성, 기본 메서드 구현
+	5. (설정) application.properties H2, JPA 설정추가
+	6. (설정) 웹 서버 실행 http://localhost:8080/h2-console DB 연결확인
+
+	7. /entity/Board.java 생성
+		- GenerationType 타입
+			- AUTO : SpringBoot에서 자동으로 선택(X)
+			- IDENTITY : MySQL, SQLServer
+			- SEQUENCE : Oracle(!)
+		- column이름을 createDate로 만들면 DB에 컬럼명이 create_date로 생성됨
+		- 컬럼명에 언더바를 안넣으려면 @column(name = "createDate") 사용
+	8. /entity/Reply.java 생성
+	9. 두 엔티티간 @OneToMany, @ManyToOne을 설정
+	10. 웹 서버 재시작 후 h2-console에서 테이블 생성확인
+	11. /repository/BoardRepository.java 빈 인터페이스(JpaRepository 상속) 생성
+	12. /repository/BoardRepository.java 빈 인터페이스(JpaRepository 상속) 생성
+	13. /test/ ... /repository/BoardRepositoryTests.java 생성, 테스트 메서드 작성
+	14. 테스트 시작 > 웹 서버 실행 > h2-console 확인
