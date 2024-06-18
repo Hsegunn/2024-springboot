@@ -21,6 +21,7 @@ public class BoardRepositoryTests {
     
     @Test
     void testInsertBoard(){
+        // 전통적인방식
         Board board1 = new Board();
         board1.setTitle("첫번째테스트");
         board1.setContent("ㅇㅇㅇㅇ");
