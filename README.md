@@ -268,3 +268,8 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 	15. jUnit 테스트로 CRUD 확인
 	16. /service/BoardService.java 생성 후 getList() 메세드 작성
 	17. /controller/BoardController.java 생성 후 /board/list 실행할 수 있는 메서드 작성
+	18. /templates/board/list.html 생성
+		- thymeleaf 속성
+			- th:if="${board != null}"
+			- th:each="${boardList}"
+			- th:text="${board.title}"

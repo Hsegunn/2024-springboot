@@ -10,13 +10,16 @@
         <table>
             <thead>
                 <tr>
-                    <td>제목</td>
-                    <td>작성일</td>
+                    <th>제목</th>
+                    <th>작성일</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="board : ${boardList}">
-                    <td th:text="${board.title}"></td>
+                    <!-- <td th:text="${board.title}"></td> -->
+                    <td>
+                        <a th:href="@{|/board/detail/${board.bno}|}" th:text="${board.title}"></a>
+                    </td>
                     <td>[[${board.createDate}]]</td>
                 </tr>
             </tbody>
