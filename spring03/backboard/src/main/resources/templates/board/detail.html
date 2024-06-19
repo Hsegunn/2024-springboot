@@ -29,8 +29,9 @@
         </div>
 
         <!-- 답변기능 영역 -->
-        <form th:action="@{|/reply/create/${board.bno}|}" method="post" class="my-3">
-            <textarea name="content" id="content" rows="10" class="form-control"></textarea>
+        <form th:action="@{|/reply/create/${board.bno}|}" th:object="${replyForm}" method="post" class="my-3">
+            <div th:replace="~{errors :: formErrorFragment}"></div>
+            <textarea th:field="*{content}"  rows="10" class="form-control"></textarea>
             <div class="d-flex justify-content-end mt-3">
                 <input type="submit" value="등록" class="btn btn-sm btn-success mx-1">
                 <a href="/board/list" class="btn btn-sm btn-secondary">목록</a>

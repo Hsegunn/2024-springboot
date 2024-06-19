@@ -1,6 +1,6 @@
 package com.jaemin.backboard.validation;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +10,10 @@ import lombok.Setter;
 public class BoardForm {
     
     @Size(max = 250)
-    @NotEmpty(message = "제목은 필수입니다")
+    // @NotEmpty는 공백도 입력되기때문에 NotBlank로 변경
+    @NotBlank(message = "제목은 필수입니다")
     private String title;
 
-    @NotEmpty(message = "내용은 필수입니다")
+    @NotBlank(message = "내용은 필수입니다")
     private String content;
 }

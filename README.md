@@ -284,6 +284,8 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 	6. /controller/BoardController.java에 /borad/detail/{bno} 실행 메서드 작성
 	7. /templates/board/detail.html 생성
 	
+		<img src="https://raw.githubusercontent.com/Hsegunn/2024-springboot/main/images/sp003.png" width="730">
+
 	8. /templates/board/detail.html에 댓글영역 추가
 	9. /service/ReplyService.java 생성, 댓글저장 메서드 작성
 	10. /controller/ReplyController.java 생성, /reply/create/{bno} 포스트매핑 메서드 작성
@@ -294,6 +296,8 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 		- https://getbootstrap.com/ 다운로드 후 압축풀기
 		- bootstrap.min.css, bootstrap.min.js를 templates/static에 위치
 	12. /templates/board/detail.html, list.html 부트스트랩 적용
+
+		<img src="https://raw.githubusercontent.com/Hsegunn/2024-springboot/main/images/sp004.png" width="730">
 
 ## 6일차
 - Spring Boot JPA 프로젝트 개발계속
@@ -310,3 +314,16 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 	11. (설정) build.gradle 입력값에 입력값 검증 디펜던시 추가
 	12. /validation/BoardForm.java 클래스 생성
 	13. /controller/BoardController.java에 BoardForm을 전달 (Get, PostMapping 둘 다)
+	14. create.html 입력항목 name, id를 th:field로 변경(ex. th:field='*{title}')
+	15. 댓글등록에도 반영, ReplyForm, ReplyController, detail.html 작업 (12~14번 내용들과 유사)
+	16. detail.html 경고영역 div는 create.html에서 복사해서 사용(오타발생 예방)
+	17. (문제) 각 입력창에 공백을 넣었을 때 입력되는 문제
+		- @NotEmpty를 @NotBlank로 변경하면 공백이 들어가지 않음
+
+		<img src="https://raw.githubusercontent.com/Hsegunn/2024-springboot/main/images/sp005.png" width="730">
+
+	18. /templates/layout.html에네비게이션바(navbar) 추가
+	19. 테스트로 데이터 추가
+
+## 7일차
+- Spring Boot JPA 프로젝트 개발계속

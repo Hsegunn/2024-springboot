@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.jaemin.backboard.entity.Board;
 import com.jaemin.backboard.service.BoardService;
 import com.jaemin.backboard.validation.BoardForm;
+import com.jaemin.backboard.validation.ReplyForm;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -34,8 +35,9 @@ public class BoardController {
         return "board/list";    // templates/board/list.html 랜더링해서 리턴
     }
 
+    // 댓글 검증을 추가하려면 매개변수로 ReplyForm을 전달
     @GetMapping("/detail/{bno}")
-    public String detail(Model model, @PathVariable("bno") Long bno) throws Exception {
+    public String detail(Model model, @PathVariable("bno") Long bno, ReplyForm replyForm) throws Exception {
         Board board = this.boardService.getBoard(bno);
         model.addAttribute("board", board);
         return "board/detail";
