@@ -298,6 +298,7 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 	12. /templates/board/detail.html, list.html 부트스트랩 적용
 
 		<img src="https://raw.githubusercontent.com/Hsegunn/2024-springboot/main/images/sp004.png" width="730">
+		
 
 ## 6일차
 - Spring Boot JPA 프로젝트 개발계속
