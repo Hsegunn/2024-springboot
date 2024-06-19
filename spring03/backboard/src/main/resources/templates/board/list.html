@@ -1,34 +1,26 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>게시판 목록</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link th:href="@{/bootstrap.min.css}" type="text/css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container my-3">
-            <table class="table table-light table-striped">
-                <thead class="table-info">
-                    <tr>
-                        <th>번호</th>
-                        <th>제목</th>
-                        <th>작성일</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="board , loop : ${boardList}">
-                        <td th:text="${loop.count}"></td>
-                        <td>
-                            <a th:href="@{|/board/detail/${board.bno}|}" th:text="${board.title}"></a>
-                        </td>
-                        <td th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <script th:src="@{/bootstrap.min.js}"></script>
-    </body>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
+<div layout:fragment="main-content" class="container my-3">
+    <table class="table table-light table-striped">
+        <thead class="table-info">
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성일</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="board , loop : ${boardList}">
+                <td th:text="${loop.count}"></td>
+                <td>
+                    <a th:href="@{|/board/detail/${board.bno}|}" th:text="${board.title}"></a>
+                </td>
+                <td th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-end">
+        <a th:href="@{/board/create}" class="btn btn-sm btn-secondary">게시물 등록</a>
+    </div>
+</div>
 </html>

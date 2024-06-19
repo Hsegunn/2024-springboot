@@ -293,3 +293,20 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 		- CDN 링크를 추가
 		- https://getbootstrap.com/ 다운로드 후 압축풀기
 		- bootstrap.min.css, bootstrap.min.js를 templates/static에 위치
+	12. /templates/board/detail.html, list.html 부트스트랩 적용
+
+## 6일차
+- Spring Boot JPA 프로젝트 개발계속
+	1. (설정) build.gradle Thymeleaf 레이아웃 사용을 위한 디펜던시 추가
+	2. /templates/layout.html Tymeleaf로 레이아웃 템플릿 생성
+	3. list.html, detail.html 레이아웃 템플릿 적용
+	4. /templates/layout.html에 Bootstrap CDN 적용
+	5. /templates/board/list.html에 게시글 등록버튼 추가
+	6. /templates/board/create.html 게시글 작성 페이지 생성
+	7. /controller/BoardController.java에 create()라는 GetMapping 메서드 추가
+	8. /service/BoardService.java setBoard() 작성
+	9. /controller/BoardController.java에 create()라는 PostMapping 메서드 추가
+	10. (문제) 내용을 적지 않아도 저장됨
+	11. (설정) build.gradle 입력값에 입력값 검증 디펜던시 추가
+	12. /validation/BoardForm.java 클래스 생성
+	13. /controller/BoardController.java에 BoardForm을 전달 (Get, PostMapping 둘 다)
