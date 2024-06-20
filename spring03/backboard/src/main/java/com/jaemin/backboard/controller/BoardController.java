@@ -1,13 +1,13 @@
 package com.jaemin.backboard.controller;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jaemin.backboard.entity.Board;
 import com.jaemin.backboard.service.BoardService;
@@ -29,9 +29,12 @@ public class BoardController {
     // @RequestMapping("/list", method=RequestMethod.GET) 아래와 동일
     // Model -> controller에 있는 객체를 View로 보내주는 역활을 하는 객체
     @GetMapping("/list")
-    public String list(Model model) {
-        List<Board> boardList = this.boardService.getList();
-        model.addAttribute("boardList", boardList);     // thymeleaf, mustache, jsp등으로 view를 보내는 기능
+    public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page) {
+        //List<Board> boardList = this.boardService.getList();
+        //model.addAttribute("boardList", boardList);     // thymeleaf, mustache, jsp등으로 view를 보내는 기능
+
+        Page<Board> paging = this.boardService.getList(page);   
+        model.addAttribute("paging", paging);       // 페이징된 보드를 view로
         return "board/list";    // templates/board/list.html 랜더링해서 리턴
     }
 

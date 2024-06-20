@@ -328,3 +328,35 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 
 ## 7일차
 - Spring Boot JPA 프로젝트 개발계속
+	0. 개념
+	```sql
+	-- 오라클 전용(11g 이하는 해당 쿼리가 작동안함)
+	select b1_0.bno,b1_0.content,b1_0.create_date,b1_0.title 
+	from board b1_0 offset 0 		-- 0부터 페이지 사이즈만큼 증가
+	rows fetch first 10 rows only	-- 페이지사이즈
+	```
+	1. 페이징
+		- /repository/BoardRepository.java findAll(pageable) 인터페이스 메서드 작성
+		- /service/BoardService.java getList(page) 메서드 작성
+		- /controller/BoardController.java list() 메서드 수정
+		- /templates/board/list.html boardList -> paging 변경
+		- /templates/board/list.html 하단 페이징 버튼추가, thymeleaf 기능추가
+		- /service/BoardService.java getList() 내용을 최신순으로 역정렬
+		- /templates/board/list.html에 게시글 번호 수정
+
+	2. /templates/board/list.html td 뱃지추가
+
+	3. H2 -> Oracle로 변경
+		- build.gradle에 Oracle 디펜던시 추가
+		- application.properties에 Oracle 관련 설정 추가, H2 설정 주석처리
+		- 재시작
+
+	4. 스프링 시큐리티
+		- (설정) build.gradle 스프링 시큐리티 관련 디펜던시 추가
+		- (설정) gradle 재빌드 , 서버 실행
+		- user / 로그상의 UUID(서버실행 시 마다 변경됨)입력
+		- /security/SecurityConfig.java 보안설정 파일생성, 작성 -> 시큐리티를 다시 풀어주는 작업
+
+		- entity에 Member.java 생성
+		- /repository/MemberRepository.java 인터페이스 생성
+		- /service/MemberService.java 생성, setMember() 메서드 작성

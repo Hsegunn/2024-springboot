@@ -3,7 +3,12 @@ package com.jaemin.backboard.service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.ArrayList;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.jaemin.backboard.entity.Board;
@@ -18,6 +23,14 @@ public class BoardService {
 
     public List<Board> getList(){
         return this.boardRepository.findAll();
+    }
+
+    // 페이징 되는 리스트 메서드
+    public Page<Board> getList(int page){
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("createDate"));
+        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
+        return this.boardRepository.findAll(pageable);
     }
 
     public Board getBoard(Long bno) throws Exception{

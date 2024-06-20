@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
     
     @GetMapping("/hello")
-    public String getHello() {
+    public String Hello() {
         log.info("getHello(); 실행");
         return "Hello";
     }
 
     @GetMapping("/")
-    public String getMain() {
+    public String Main() {
         return "redirect:/board/list";  // localhost:8080/ -> localhost:8080/board/list 변경
     }
     

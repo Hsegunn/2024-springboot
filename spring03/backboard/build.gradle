@@ -35,12 +35,15 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	// DB를 위한 디펜던시 추가(H2, Oracle, JPA)
 	runtimeOnly 'com.h2database:h2'
-	// runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	// Thymeleaf 레이아웃 적용 디펜던시
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 	// 입력값 검증 디펜던시
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	// 스프링 시큐리티 디펜던시
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 }
 
 tasks.named('test') {
