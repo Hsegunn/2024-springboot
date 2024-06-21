@@ -7,3 +7,8 @@ a:hover {
     text-decoration: underline;
     color: blueviolet;
 }
+
+.form-register {
+    max-width: 400px;
+    padding: 1rem;
+}

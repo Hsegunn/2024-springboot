@@ -33,6 +33,10 @@ public class Reply {
     @CreatedDate
     @Column(name = "createDate" , updatable = false)
     private LocalDateTime createDate;
+    
+    // 사용자가 여러개의 게시글을 작성할 수 있다. 다대일 설정
+    @ManyToOne
+    private Member writer;
 
     // 중요, ERD로 DB를 설계하지 않고 엔티티클래스로 관계를 형성하려면 반드시 사용
     @ManyToOne

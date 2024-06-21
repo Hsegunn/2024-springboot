@@ -3,49 +3,49 @@ package com.jaemin.backboard.repository;
 // import static org.junit.jupiter.api.Assertions.assertEquals;
 // import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.time.LocalDateTime;
+// import java.time.LocalDateTime;
 // import java.util.List;
 // import java.util.Optional;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.jaemin.backboard.entity.Board;
-import com.jaemin.backboard.service.BoardService;
+// import com.jaemin.backboard.entity.Board;
+// import com.jaemin.backboard.service.BoardService;
 
 @SpringBootTest
 public class BoardRepositoryTests {
-    // JUnit 테스트
-    @Autowired
-    private BoardRepository boardRepository;
+    // // JUnit 테스트
+    // @Autowired
+    // private BoardRepository boardRepository;
     
-    @Autowired
-    private BoardService boardService;
+    // @Autowired
+    // private BoardService boardService;
 
-    @Test
-    void testThreeHundredBoards(){
-        for(int i = 0; i < 300; i++){
-            this.boardService.setBoard(String.format("테스트데이터 - [%03d]", i+1), 
-                                       "내용없음");
-        }
-    }
+    // @Test
+    // void testThreeHundredBoards(){
+    //     for(int i = 0; i < 300; i++){
+    //         this.boardService.setBoard(String.format("테스트데이터 - [%03d]", i+1), 
+    //                                    "내용없음", null);
+    //     }
+    // }
 
-    @Test
-    void testInsertBoard(){
-        // 전통적인방식
-        Board board1 = new Board();
-        board1.setTitle("첫번째테스트");
-        board1.setContent("ㅇㅇㅇㅇ");
-        board1.setCreateDate(LocalDateTime.now());
-        this.boardRepository.save(board1);
+    // @Test
+    // void testInsertBoard(){
+    //     // 전통적인방식
+    //     Board board1 = new Board();
+    //     board1.setTitle("첫번째테스트");
+    //     board1.setContent("ㅇㅇㅇㅇ");
+    //     board1.setCreateDate(LocalDateTime.now());
+    //     this.boardRepository.save(board1);
 
-        // builder를 사용한 객체 생성방식
-        Board board2 = Board.builder().title("두번째 테스트").content("ㄴㄴㄴㄴ")
-                                      .createDate(LocalDateTime.now()).build();
-        this.boardRepository.save(board2);
-        System.out.println("테스트완료");
-    }
+    //     // builder를 사용한 객체 생성방식
+    //     Board board2 = Board.builder().title("두번째 테스트").content("ㄴㄴㄴㄴ")
+    //                                   .createDate(LocalDateTime.now()).build();
+    //     this.boardRepository.save(board2);
+    //     System.out.println("테스트완료");
+    // }
     // @Test
     // void testSelectBoard(){
     //     List<Board> all = this.boardRepository.findAll();   // select * from board
