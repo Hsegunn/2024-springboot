@@ -344,6 +344,9 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 		- /service/BoardService.java getList() 내용을 최신순으로 역정렬
 		- /templates/board/list.html에 게시글 번호 수정
 
+		<img src="https://raw.githubusercontent.com/Hsegunn/2024-springboot/main/images/sp006.png" width="730">
+
+
 	2. /templates/board/list.html td 뱃지추가
 
 	3. H2 -> Oracle로 변경
@@ -402,6 +405,9 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 		
 		- /templates/board/list.html table태그에 작성자 컬럼 추가
 		- /templates/board/list.html 게시글 작성자, 댓글 작성자표시 추가
+
+		<img src="https://raw.githubusercontent.com/Hsegunn/2024-springboot/main/images/sp007.png" width="730">
+
 
 ## 9일차
 - Spring Boot JPA 프로젝트 개발계속
