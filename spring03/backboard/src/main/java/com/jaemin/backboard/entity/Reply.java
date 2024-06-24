@@ -3,6 +3,7 @@ package com.jaemin.backboard.entity;
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,6 +34,10 @@ public class Reply {
     @CreatedDate
     @Column(name = "createDate" , updatable = false)
     private LocalDateTime createDate;
+
+    @LastModifiedDate
+    @Column(name = "modifyDate")
+    private LocalDateTime modifyDate; // 24.06.24 수정일 추가
     
     // 사용자가 여러개의 게시글을 작성할 수 있다. 다대일 설정
     @ManyToOne
