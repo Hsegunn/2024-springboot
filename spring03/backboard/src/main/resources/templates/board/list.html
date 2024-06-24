@@ -75,8 +75,8 @@
     </div>
     <!-- 검색 영역 -->
      <form th:action="@{/board/list}" method="get" id="searchForm">
-        <input type="hidden" id="kw" th:value="${kw}">
-        <input type="hidden" id="page" th:value="${paging.number}">
+        <input type="hidden" id="kw" name="kw" th:value="${kw}">
+        <input type="hidden" id="page" name="page" th:value="${paging.number}">
      </form>
 </div>
 <script layout:fragment="sub-script" type="text/javascript">
@@ -90,7 +90,6 @@
 
     const btn_search = document.getElementById("btn_search");
     btn_search.addEventListener('click',function(){
-        console.log(document.getElementById('search_kw').value);
         document.getElementById('kw').value = document.getElementById('search_kw').value;
         document.getElementById('page').value = 0;      // 검색할 경우 0페이지 부터
         document.getElementById('searchForm').submit();     // 서브밋 발동
