@@ -479,10 +479,13 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 		- /entity/Categoty.java 클래스 추가
 		- /repository/CategoryRepository.java 인터페이스
 		- /serivce/CategoryService.java 추가
-		- /service/BoardService.java 조회조건에 카테고리 추가 수정
+		- /entity/Board.java에 category 속성 추가
+		- /service/BoardService.java getList(), searchBoard(), setBoard() 추가생성
 		- 카테고리를 자유게시판, 질문응답게시판 분리
-		- /templates/layout.html navbar.html 추가
-		- /controller/BoardController.java GetMapping 메서드에 카테고리를 추가
+		- /templates/layout.html 사이드 바 태그 추가
+		- /controller/BoardController.java CategoryService, GetMapping 메서드에 카테고리를 매개변수 추가
+		- /templates/list.html 카테고리 변수 추가
+		- /controller/BoardController.java create() Get, Post메서드에 category 추가
 
 	4. 조회수 표시
 		- /entity/Board.java 조회수 필드 추가
