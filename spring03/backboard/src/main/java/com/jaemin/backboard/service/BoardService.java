@@ -25,6 +25,7 @@ import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -129,24 +130,41 @@ public class BoardService {
         };
     }
 
-        // 카테고리 추가된 메서드
-        public Specification<Board> searchBoard(String keyword, Integer cateId){
-            return new Specification<Board>() {
-                private static final long serialVersionID = 1L; // 필요한 값이라서 추가
+    // 카테고리 추가된 메서드
+     public Specification<Board> searchBoard(String keyword, Integer cateId){
+        return new Specification<Board>() {
+            private static final long serialVersionID = 1L; // 필요한 값이라서 추가
     
-                @SuppressWarnings("null")
-                @Override
-                public Predicate toPredicate(Root<Board> b, CriteriaQuery<?> query, CriteriaBuilder cb) {
-                    // query를 JPA로 생성
-                    query.distinct(true);   // 중복제거
-                    Join<Board, Reply> r = b.join("replyList", JoinType.LEFT);
+            @SuppressWarnings("null")
+            @Override
+            public Predicate toPredicate(Root<Board> b, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                // query를 JPA로 생성
+                query.distinct(true);   // 중복제거
+                Join<Board, Reply> r = b.join("replyList", JoinType.LEFT);
     
-                    return cb.and(cb.equal(b.get("category").get("id"), cateId),
-                                  cb.or(cb.like(b.get("title"), "%" + keyword + "%"),  // 게시물 제목에서 검색
-                                        cb.like(b.get("content"), "%" + keyword + "%"),    // 게시물 내용에서 검색
-                                        cb.like(r.get("content"), "%" + keyword + "%"))     // 댓글 내용에서 검색
-                                );
-                }
-            };
+                return cb.and(cb.equal(b.get("category").get("id"), cateId),
+                              cb.or(cb.like(b.get("title"), "%" + keyword + "%"),  // 게시물 제목에서 검색
+                                    cb.like(b.get("content"), "%" + keyword + "%"),    // 게시물 내용에서 검색
+                                    cb.like(r.get("content"), "%" + keyword + "%"))     // 댓글 내용에서 검색
+                            );
+            }
+        };
+    }
+
+    // 조회수 증가 메서드
+    @Transactional      // 조회하면서 업데이트
+    public Board hitBoard(Long bno){
+        // Optional 기능 널체크
+        Optional<Board> oboard = this.boardRepository.findByBno(bno);
+
+        if (oboard.isPresent()) {
+            Board board = oboard.get();
+            // board.setHit(board.getHit() + 1);    // 예외발생
+            // 아래코드로 수정
+            board.setHit(Optional.ofNullable(board.getHit()).orElse(0) + 1);
+            return board;
+        } else{
+            throw new NotFoundException("Board Not Found");
         }
+    }
 }
