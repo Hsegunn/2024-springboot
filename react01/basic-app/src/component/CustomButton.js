@@ -1,8 +1,19 @@
 
-function CustomButton() {
+function CustomButton(props) {
+
+    let heroName = props.data.heroName;
     let isLoggedIn = true;  // 로그인했음
     // let content;
 
+    
+    function handleClick(name) {
+        if (isLoggedIn) {
+            alert(name + "이 로그아웃 되었습니다")
+        } else{
+            alert(name +"이 로그인 합니다")
+        }
+    }
+    
     // if (isLoggedIn) {
     //     content = <button>Log Out</button>;
     // } else{
@@ -13,9 +24,9 @@ function CustomButton() {
         <>
             {
                 isLoggedIn ? (
-                    <button>Log Out</button>
+                    <button onClick={() => handleClick(heroName)}>Log Out</button>
                 ) : (
-                    <button>Log In</button>
+                    <button onClick={() => handleClick(heroName)}>Log In</button>
                 )
             }
         </>
