@@ -865,7 +865,33 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 
 ## 16일차
 - Spring Boot React연동 프로젝트 개발 계속
-	1. 상세화면
-	2. 입력화면
-	3. 페이징
-	4. 로그인
+	1. Spring Boot서버가 실행되지 않았을 때
+		- 프론트 서버부터 시작하면 Uncaught runtime error. 발생
+		- axios request가 예외발생 try-catch로 wrapping 해줘야 함
+	
+	2. 페이징
+		- (Back) /dto/PagingDto.java 생성
+		- (Back)	/dto/Header.java 생성
+		- RestBoardController.java list() 수정 List<BoardDto> -> Header<List<BoardDto>>로 형변환
+		- (Front) /BoardList.js 변수부분 수정
+		- (Front) /common/CommonFunc.js 생성 - 작성일을 수정함수 formatDate() 작성
+		- /BoardList.js 날짜부분에 formatDate() 적용
+		- /BoardList.js 댓글 갯수 표시
+		- /(Back) /dto/BoardDto.java 게시글 번호 변수추가
+		- RestBoardController.java 게시글번호 계산로직 추가
+		- (Front) /BoardList.js bno를 num으로 변경
+
+	3. 상세화면
+		- (Back) RestBoardController.java detail() 메서드 생성
+		- (Front) /BoardList.js 제목 수정
+		- /routes/BoardDetail.js 생성
+
+## 17일차
+- Spring Boot React연동 프로젝트 개발 계속
+	1. 로그인
+
+	2. 상세화면 완료
+
+	3. 입력화면
+
+	4. 구글 로그인
